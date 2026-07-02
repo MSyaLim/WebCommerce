@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art</title>
+    <link rel="stylesheet" href="../CSS/art.css">
+</head>
+<body>
+    <script src="../global.js"></script>
+    <div class="title">
+        <h1>Art</h1>
+        <button class="button" onclick="goToPage('../index.html')">Back</button>
+    </div>
+
+    <section class="art">
+        <section class="art-card">
+        <img src="../Assets/TheLoneTree.jpeg" alt="The Lone Tree" class="art-image" height="300" width="200">
+        <div class="art-description">
+            <h2>The Lone Tree</h2>
+            <p>This is a digital painting of a lone tree in a serene landscape. It represents solitude and the beauty of nature.</p>
+        </div>
+        </section>
+
+        <section class="art-card">
+            <img src="../Assets/TheAftermath.jpeg" alt="The Aftermath" class="art-image" height="300" width="200">
+            <div class="art-description">
+                <h2>The Aftermath</h2>
+                <p>This digital artwork depicts the aftermath of a storm, with a broken tree and scattered debris. It symbolizes resilience and recovery.</p>
+            </div>
+        </section>
+
+        <section class="art-card">
+            <img src="../Assets/TheEnd.jpeg" alt="The End" class="art-image" width="300" height="200">
+            <div class="art-description">
+                <h2>The End</h2>
+                <p>This piece portrays the end of a journey, with a sunset over a distant horizon. It evokes feelings of closure and reflection.</p>
+            </div>
+        </section>
+
+        <section class="art-card">
+            <img src="../Assets/CelestialBeing.jpeg" alt="Celestial Being" class="art-image" height="300" width="200">
+            <div class="art-description">
+                <h2>Celestial Being</h2>
+                <p>This artwork features a celestial being surrounded by cosmic elements. It represents the mysteries of the universe and the beauty of the unknown.</p>
+            </div>
+        </section>
+
+    </section>
+    
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        requestAnimationFrame(() => {
+            document.body.classList.add("loaded");
+        });
+    });
+
+    function goToPage(url) {
+        document.body.classList.remove("loaded");
+        document.body.classList.add("leaving");
+
+        setTimeout(() => {
+            window.location.href = url;
+        }, 450);
+    }
+    </script>
+</body>
+</html>

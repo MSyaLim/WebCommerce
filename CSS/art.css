@@ -1,0 +1,242 @@
+:root {
+    --color-primary: #2563EB;
+    --color-secondary: #06B6D4;
+    --color-accent: #8B5CF6;
+    --color-background: #FFFFFF;
+    --color-surface: #F8FAFC;
+    --color-text: #0F172A;
+    --color-border: #CBD5E1;
+    --color-success: #10B981;
+}
+
+html {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background: var(--color-background);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+body {
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-text);
+}
+
+@media only screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+    .title {
+        font-size: 1.5rem;
+    }
+    .topnav button {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.25rem;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    .title {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (min-width: 1025px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.art-card,
+.contact,
+.socials,
+.credits,
+.intro,
+.shop-card,
+.title {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.art-card,
+.contact,
+.socials,
+.credits,
+.intro,
+.shop-card {
+    padding: 0.9375rem;
+    margin: 1.25rem auto;
+    text-align: center;
+}
+
+.art-card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.topnav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+.topnav button {
+    float: left;
+    width: 25%;
+    color: var(--color-text);
+    text-align: center;
+    padding: 0.875rem 1rem;
+    text-decoration: none;
+    font-size: 1.0625rem;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.topnav button:hover {
+    background-color: rgba(6, 182, 212, 0.12);
+    color: var(--color-secondary);
+}
+
+.topnav button.active {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+}
+
+.footer {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    text-align: center;
+    padding: 0.625rem 0;
+    margin-top: 1.25rem;
+    border-top: 1px solid var(--color-border);
+}
+
+body {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s ease;
+    min-height: 100vh;
+}
+
+body.loaded {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+body.leaving {
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+.shops,
+.shop-grid {
+    width: 100%;
+}
+
+.title {
+    padding: 1rem;
+    background-color: var(--color-surface);
+    width: min(100rem, 90%);
+    border-radius: 12px;
+    margin: 1.25rem auto 0;
+    font-size: 2.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.button {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.button:active {
+    transform: translateY(0.125rem);
+}
+
+.button:hover {
+    background-color: var(--color-secondary);
+    color: #FFFFFF;
+}
+
+.button,
+.button:visited,
+.button:hover,
+.button:active {
+    text-decoration: none;
+}
+
+.intro {
+    width: min(100rem, 90%);
+    margin: 1.25rem auto;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    padding: 0.9375rem;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.font-highlight {
+    color: #FFFFFF;
+    background-color: var(--color-accent);
+    margin: 0.625rem auto;
+    width: min-content;
+    padding: 0.3125rem 0.625rem;
+    border-radius: 8px;
+    text-align: center;
+    justify-content: center;
+}
+
+.shop-title {
+    text-align: center;
+    margin: 2.5rem 0 1.25rem;
+    color: var(--color-text);
+}
+
+.art {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+}
+
+.shops h2 {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.shop-card {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    padding: 0.9375rem;
+    margin: 0.625rem 0;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    transition: transform 0.2s ease;
+}

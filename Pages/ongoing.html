@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On-Going Projects</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <script src="../global.js"></script>
+    <div class="topnav">
+        <button onclick="goToPage('../index.html')">Home</button>
+        <button class="active" onclick="goToPage('ongoing.html')">On-Going Projects</button>
+        <button onclick="goToPage('https://ko-fi.com/exdanny')" target="_blank">Ko-fi</button>
+        <button onclick="goToPage('AboutMe.html')">About Us</button>
+    </div>
+
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        requestAnimationFrame(() => {
+            document.body.classList.add("loaded");
+        });
+    });
+
+    function goToPage(url) {
+        document.body.classList.remove("loaded");
+        document.body.classList.add("leaving");
+
+        setTimeout(() => {
+            window.location.href = url;
+        }, 450);
+    }
+    </script>
+</body>
+</html>

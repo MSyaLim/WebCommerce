@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <script src="../global.js"></script>
+    <div class="title">
+        <h1>Games</h1>
+        <button class="button" onclick="goToPage('../index.html')">Back</button>
+    </div>
+
+    <div class="shop-card">
+        <h3>The Deep Dive</h3>
+        <img src="../Assets/TheDeepDive.png" alt="The Deep Dive">
+        <p>Struggled in cash, you had no choice but to apply for a job at the corporation. You hate the ocean for a really good reason, there's something unusual. </p>
+        <a class="button" href="https://sandbox.hitpay.link/cqkkqa" target="_blank" rel="noopener noreferrer">Purchase</a>
+    </div>
+
+    <div class="shop-card">
+        <h3>Survive 30 Seconds</h3>
+        <img src="../Assets/Survive.png" alt="Survive 30 Seconds">
+        <p>Survive 30 Seconds is a game where you are in a lab without knowing how or when you get there. Survive 30 seconds or you'll be reset, if you get reset 5 times your dead.</p>
+        <a class="button" href="https://sandbox.hitpay.link/cqkkqa" target="_blank" rel="noopener noreferrer">Purchase</a>
+    </div>
+
+    <div class="shop-card">
+        <h3>Nature & Tech</h3>
+        <img src="../Assets/Nature.png" alt="Nature & Tech">
+        <p>A game shaped like a card game and functions like a building game.</p>
+        <a class="button" href="https://sandbox.hitpay.link/cqkkqa" target="_blank" rel="noopener noreferrer">Purchase</a>
+    </div>
+    
+    <div class="shop-card">
+        <h3>Crypto Miner (DEMO)</h3>
+        <img src="../Assets/Crypto.png" alt="Crypto Miner (DEMO)">
+        <p>A game where you buy GPU for mining crypto</p>
+        <a class="button" href="https://sandbox.hitpay.link/cqkkqa" target="_blank" rel="noopener noreferrer">Purchase</a>
+    </div>
+    
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        requestAnimationFrame(() => {
+            document.body.classList.add("loaded");
+        });
+    });
+
+    function goToPage(url) {
+        document.body.classList.remove("loaded");
+        document.body.classList.add("leaving");
+
+        setTimeout(() => {
+            window.location.href = url;
+        }, 450);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <script src="../global.js"></script>
+    <div class="title">
+        <h1>Assets</h1>                            
+        <button class="button" onclick="goToPage('../index.html')">Back</button>
+    </div>
+
+    <div class="assets-grid">
+        <div class="shop-card">
+            <h3>Assets</h3>
+            <p>Custom 2D pixel art assets and Godot plugins</p>
+            <button class="button" onclick="goToPage('assets.html')">More info</button>
+        </div>
+
+        <div class="shop-card">
+            <h3>Games</h3>
+            <p>Check out my games either my prototypes or full releases!</p>
+            <button class="button" onclick="goToPage('games.html')">More info</button>
+        </div>
+
+        <div class="shop-card">
+            <h3>Art</h3>
+            <p>Check out my digital art and consider giving me a ko-fi for support!</p>
+            <button class="button" onclick="goToPage('art.html')">More info</button>
+        </div>
+    </div>
+
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        requestAnimationFrame(() => {
+            document.body.classList.add("loaded");
+        });
+    });
+
+    function goToPage(url) {
+        document.body.classList.remove("loaded");
+        document.body.classList.add("leaving");
+
+        setTimeout(() => {
+            window.location.href = url;
+        }, 450);
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+    <script src="global.js"></script>
+    <div class="topnav">
+        <button class="active" onclick="goToPage('index.html')">Home</button>
+        <button onclick="goToPage('Pages/ongoing.html')">On-Going Projects</button>
+        <button onclick="goToPage('https://ko-fi.com/exdanny')" target="_blank">Ko-fi</button>
+        <button onclick="goToPage('Pages/AboutMe.html')">About Us</button>
+    </div>
+
+    <div class="title">
+        <h1>Welcome!</h1>
+    </div>
+
+    <section class="intro">
+        <h2 class="font-highlight">Introduction</h2>
+        <p>TikTechStudio is a small indie creative studio built around passion, innovation, and hands-on craftsmanship. We create games, art, and custom digital assets with a personal touch, bringing ideas to life for players and creators who value originality.</p>
+    </section>
+
+    <div class="shop-title">
+        <h2>Shops</h2>
+    </div>
+
+    <section class="shops">
+
+    <div class="shop-card">
+        <h3>Assets</h3>
+        <p>Custom 2D pixel art assets and Godot plugins</p>
+        <button class="button" onclick="goToPage('Pages/assets.html')">More info</button>
+    </div>
+
+    <div class="shop-card">
+        <h3>Games</h3>
+        <p>Check out my games either my prototypes or full releases!</p>
+        <button class="button" onclick="goToPage('Pages/games.html')">More info</button>
+    </div>
+
+    <div class="shop-card">
+        <h3>Art</h3>
+        <p>Check out my digital art and consider giving me a ko-fi for support!</p>
+        <button class="button" onclick="goToPage('Pages/art.html')">More info</button>
+    </div>
+
+    <div class="shop-card">
+        <h3>Shop</h3>
+        <p>Digital products or anything miscellaneous belongs here!</p>
+        <button class="button" onclick="goToPage('Pages/Shop.html')">More info</button>
+    </div>
+    </section>
+
+    <div class="footer">
+        <section class="contact">
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:exdanny51303@gmail.com">exdanny51303@gmail.com</a></p>
+        </section>
+        <section class="socials">
+            <h2>Socials</h2>
+            <p><a href="https://twitter.com/exdanny" target="_blank">Twitter</a></p>
+            <p><a href="https://ko-fi.com/exdanny" target="_blank">Ko-fi</a></p>
+        </section>
+        <section class="credits">
+            <h2>Credits</h2>
+            <p>Website designed and developed by ExDanny</p>
+        </section>
+        <p>Copyright © 2026 ExDanny. All rights reserved.</p>
+        <img src="Assets/placeholder.svg" alt="Logo" class="footer-logo">
+    </div>
+
+    <script>
+    window.addEventListener("DOMContentLoaded", () => {
+        requestAnimationFrame(() => {
+            document.body.classList.add("loaded");
+        });
+    });
+
+    function goToPage(url) {
+        document.body.classList.remove("loaded");
+        document.body.classList.add("leaving");
+
+        setTimeout(() => {
+            window.location.href = url;
+        }, 450);
+    }
+    </script>
+</body>
+</html>
