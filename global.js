@@ -96,6 +96,7 @@
         root.style.setProperty('--color-border', isDark ? '#334155' : '#CBD5E1');
         root.style.setProperty('--color-success', isDark ? '#34D399' : '#10B981');
         root.style.setProperty('--shadow', isDark ? '0 8px 24px rgba(0, 0, 0, 0.35)' : '0 8px 24px rgba(15, 23, 42, 0.08)');
+        root.style.setProperty('--color-text-secondary', isDark ? '#94A3B8' : '#475569');
 
         if (body) {
             body.setAttribute('data-theme', theme);
