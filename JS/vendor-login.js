@@ -1,71 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../CSS/vendor-login.css" />
-  <link rel="stylesheet" href="../CSS/style2.css" />
-  <title>Login</title>
-</head>
-<body>
-  <section class="vendor-page">
-    <div class="vendor-hero">
-      <div class="hero-row" style="display:flex;align-items:center;gap:1rem;justify-content:flex-start;">
-        <button class="button back-button" type="button" onclick="goToPage('../shop.html')" aria-label="Back to shop">
-          ← Back
-        </button>
-        <div class="hero-text" style="flex:1 1 auto;">
-          <h1>Vendor Login</h1>
-          <p>Access your vendor dashboard</p>
-        </div>
-      </div>
-    </div>
+import { supabase } from "./supabase.js";
 
-    <form id="loginForm" novalidate>
-      <label for="loginEmail">Email</label>
-      <input
-        id="loginEmail"
-        type="email"
-        name="email"
-        required
-        autocomplete="email"
-      />
+const form = document.getElementById("loginForm");
+const message = document.getElementById("loginMessage");
 
-      <label for="loginPassword">Password</label>
-      <input
-        id="loginPassword"
-        type="password"
-        name="password"
-        required
-        autocomplete="current-password"
-      />
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
 
-      <button type="submit" class="button">Login</button>
-    </form>
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    <p id="loginMessage" class="login-message" role="status" aria-live="polite"></p>
-  </section>
+  const formData = new FormData(form);
+  const email = formData.get("email");
 
-  <script>
-    window.addEventListener("DOMContentLoaded", () => {
-      requestAnimationFrame(() => {
-        document.body.classList.add("loaded");
-      });
+  // validate email
+  if (!isValidEmail(email)) {
+    message.textContent = "Please enter a valid email address";
+    message.style.color = "#ef4444";
+    message.classList.add("show");
+    return;
+  }
+
+  message.textContent = "Logging you in...";
+  message.style.color = ""; // reset color to default
+  message.classList.add("show");
+
+  try {
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password: formData.get("password"),
     });
 
-    function goToPage(url) {
-      document.body.classList.remove("loaded");
-      document.body.classList.add("leaving");
-      setTimeout(() => {
-        window.location.href = url;
-      }, 450);
+    if (error) {
+      message.textContent = error.message;
+      message.style.color = "#ef4444";
+      return;
     }
 
-    // expose for inline handlers if needed
-    window.goToPage = goToPage;
-  </script>
+    message.style.color = "var(--color-success)";
+    message.textContent = "Welcome back! Redirecting...";
 
-  <script type="module" src="../global.js"></script>
-  <script type="module" src="../JS/vendor-login.js"></script>
-</body>
-</html>
+    setTimeout(() => {
+      window.location.href = "./vendor-dashboard.html";
+    }, 1000);
+  } catch (err) {
+    console.error(err);
+    message.textContent = "An unexpected error occurred. Try again.";
+    message.style.color = "#ef4444";
+  }
+});
