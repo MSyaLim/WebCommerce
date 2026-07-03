@@ -167,3 +167,44 @@
         applyTheme(initialTheme);
     });
 })();
+
+// global.js
+// Small helpers used across vendor pages
+
+// Replace broken images with a placeholder
+export function enableImageFallback(placeholderPath = "/images/placeholder.png") {
+  // run once DOM is ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => _attach());
+  } else {
+    _attach();
+  }
+
+  function _attach() {
+    // attach error handler to existing and future images
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll("img").forEach(_ensureHandler);
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+    document.querySelectorAll("img").forEach(_ensureHandler);
+
+    function _ensureHandler(img) {
+      if (img.__fallbackAttached) return;
+      img.addEventListener("error", () => {
+        if (img.src !== placeholderPath) {
+          img.src = placeholderPath;
+        }
+      });
+      img.__fallbackAttached = true;
+    }
+  }
+}
+
+// small convenience to add loaded class with animation timing used in your pages
+export function markLoaded() {
+  requestAnimationFrame(() => document.body.classList.add("loaded"));
+}
+
+// auto-run fallback with default placeholder path
+enableImageFallback();

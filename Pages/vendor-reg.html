@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../CSS/base.css" />
+  <link rel="stylesheet" href="../CSS/vendor-reg.css" />
+  <title>Account Registration</title>
+</head>
+<body>
+  <section class="vendor-page">
+    
+    <div class="vendor-hero">
+    <div class="vendor-hero-row">
+        <button class="button back-button" type="button" onclick="goToPage('../Pages/Shop.html')" aria-label="Back to shop">
+        Back
+        </button>
+
+        <div class="vendor-hero-text">
+        <h1>Vendor Registration</h1>
+        <p>Create your store and start selling</p>
+        </div>
+    </div>
+    </div>
+
+    <form id="vendorForm" novalidate>
+      <label for="email">Email</label>
+      <input id="email" type="email" name="email" required autocomplete="email" />
+
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" required autocomplete="new-password" />
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" type="password" name="confirmPassword" required autocomplete="new-password" />
+
+      <label for="storeName">Store Name</label>
+      <input id="storeName" type="text" name="storeName" required />
+
+      <label for="logo_url">Logo URL</label>
+      <input id="logo_url" type="url" name="logo_url" required />
+
+      <label for="banner_url">Banner URL</label>
+      <input id="banner_url" type="url" name="banner_url" required />
+
+      <label for="description">Description</label>
+      <textarea id="description" name="description"></textarea>
+
+      <label for="long_description">Long Description</label>
+      <textarea id="long_description" name="long_description"></textarea>
+
+      <button type="submit">Register Vendor</button>
+    </form>
+  </section>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      requestAnimationFrame(() => {
+        document.body.classList.add("loaded");
+      });
+    });
+
+    function goToPage(url) {
+      document.body.classList.remove("loaded");
+      document.body.classList.add("leaving");
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 450);
+    }
+  </script>
+
+  <script type="module" src="../JS/vendor-reg.js"></script>
+  <script type="module" src="../global.js"></script>
+</body>
+</html>
