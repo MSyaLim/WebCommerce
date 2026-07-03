@@ -56,7 +56,7 @@ form.addEventListener("submit", async (e) => {
       email,
       password,
       options: {
-        emailRedirectTo: "http://msyalim.github.io/WebCommerce/Pages/Shop.html",
+        emailRedirectTo: "https://msyalim.github.io/WebCommerce/Pages/Shop.html",
       },
     });
 
