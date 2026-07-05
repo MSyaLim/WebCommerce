@@ -19,16 +19,22 @@ async function loadDashboard() {
     }
 
     // 2. Get vendor profile
-    const { data: vendor, error: vendorError } = await supabase
+    console.log("Logged in User ID:", user.id);
+    
+    const { data: vendors, error: vendorError } = await supabase
       .from("Vendors")
-      .select("*")
-      .eq("id", user.id)
-      .single();
-
+      .select("*");
+    
+    console.log("All vendors:", vendors);
+    
+    const vendor = vendors?.find(v => v.id === user.id);
+    
+    console.log("Matched vendor:", vendor);
+    
     if (vendorError) {
       console.error("Vendor fetch error:", vendorError);
     }
-
+    
     if (vendor) {
       vendorName.textContent = vendor.name || "Unnamed vendor";
       vendorDesc.textContent = vendor.description || "";
