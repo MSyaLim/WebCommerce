@@ -1,0 +1,168 @@
+:root {
+  --color-primary: #2563EB;
+  --color-secondary: #06B6D4;
+  --color-accent: #8B5CF6;
+  --color-background: #FFFFFF;
+  --color-surface: #F8FAFC;
+  --color-text: #0F172A;
+  --color-border: #CBD5E1;
+  --color-text-secondary: #475569;
+  --color-success: #10B981;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  --radius: 12px;
+}
+
+/* Reset box sizing */
+* { box-sizing: border-box; }
+
+/* Page layout */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(180deg, var(--color-surface), var(--color-background));
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+/* Container */
+.vendor-page {
+  width: min(520px, 100%);
+}
+
+/* Hero */
+.vendor-hero {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, var(--color-surface), rgba(6, 182, 212, 0.06));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.vendor-hero h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+
+.vendor-hero p {
+  margin-top: 0.5rem;
+  color: var(--color-text-secondary);
+}
+
+/* Form card */
+#loginForm {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Labels */
+#loginForm label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* Inputs */
+#loginForm input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  font-size: 1rem;
+  outline: none;
+  transition: 0.18s ease;
+  color: var(--color-text);
+}
+
+#loginForm input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.06);
+}
+
+/* Button */
+#loginForm button {
+  margin-top: 0.5rem;
+  padding: 0.9rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+}
+
+#loginForm button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.14);
+}
+
+/* Login message */
+.login-message {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--color-success);
+  opacity: 0;
+  transform: translateY(5px);
+  transition: all 0.3s ease;
+}
+
+.login-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure shared .button styles are applied sitewide (global stylesheet) */
+/* Make back-button visually match other .button elements */
+.back-button {
+  /* inherit the global button look */
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.12);
+  border: none;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* hover/active states match other buttons */
+.back-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.14);
+}
+
+/* keep the login submit full width while back button stays compact */
+#loginForm .button {
+  width: 100%;
+  padding: 0.9rem 1rem;
+}
+
+/* keep back-button compact in the hero row */
+.hero-row .back-button {
+  width: auto;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .vendor-page { width: calc(100% - 2rem); }
+  #loginForm { padding: 1.25rem; }
+  .vendor-hero h1 { font-size: 1.5rem; }
+}

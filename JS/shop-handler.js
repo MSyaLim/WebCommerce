@@ -1,17 +1,35 @@
 import { products } from "./products.js";
+import { vendors } from "./vendors.js";
 
 function groupByVendor(items) {
-    const vendors = {};
+    const vendorsMap = {};
 
     items.forEach((product) => {
-        if (!vendors[product.vendor]) {
-            vendors[product.vendor] = [];
+        const vendorId = product.vendorId;
+
+        if (!vendorId) {
+            console.warn("Missing vendorId:", product);
+            return;
         }
 
-        vendors[product.vendor].push(product);
+        const vendor = vendors.find(v => v.id === vendorId);
+
+        if (!vendor) {
+            console.warn("Vendor not found for:", vendorId);
+            return;
+        }
+
+        if (!vendorsMap[vendorId]) {
+            vendorsMap[vendorId] = {
+                vendor,
+                products: []
+            };
+        }
+
+        vendorsMap[vendorId].products.push(product);
     });
 
-    return vendors;
+    return vendorsMap;
 }
 
 function createCard(product) {
@@ -25,10 +43,18 @@ function createCard(product) {
 
     const preview = document.createElement("div");
     preview.className = "product-card__preview";
-    preview.textContent = product.title;
 
-    const title = document.createElement("h3");
-    title.textContent = product.title;
+    const image = document.createElement("img");
+    image.src = product.image || "../Assets/placeholder.svg";
+    image.alt = product.title;
+    image.loading = "lazy";
+    image.decoding = "async";
+
+    const overlay = document.createElement("div");
+    overlay.className = "product-card__overlay";
+    overlay.textContent = product.title;
+
+    preview.append(image, overlay);
 
     const price = document.createElement("p");
     price.className = "price";
@@ -45,7 +71,7 @@ function createCard(product) {
     button.target = "_blank";
     button.rel = "noopener noreferrer";
 
-    card.append(preview, title, price, description, button);
+    card.append(preview, price, description, button);
     return card;
 }
 
@@ -66,7 +92,9 @@ function renderShop() {
         return;
     }
 
-    Object.entries(grouped).forEach(([vendorName, items]) => {
+    Object.entries(grouped).forEach(([vendorId, data]) => {
+        const vendor = data.vendor;
+        const items = data.products;
         const vendorBlock = document.createElement("section");
         vendorBlock.className = "vendor-block";
 
@@ -74,7 +102,7 @@ function renderShop() {
         header.className = "vendor-block__header";
 
         const title = document.createElement("h2");
-        title.textContent = vendorName;
+        title.textContent = vendor?.name || "Unknown Vendor";
         header.appendChild(title);
 
         const grid = document.createElement("div");
@@ -102,3 +130,5 @@ document.addEventListener("click", (event) => {
         window.openModal(card);
     }
 });
+
+console.log(grouped);

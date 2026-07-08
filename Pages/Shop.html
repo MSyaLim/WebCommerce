@@ -1,107 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/shop.css">
-    <script type="module" src="../JS/shop-handler.js"></script>
-    <title>Shop</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../CSS/style2.css" />
+  <link rel="stylesheet" href="../CSS/shop.css" />
+  <script type="module" src="../JS/shop-handler.js"></script>
+  <title>Shop</title>
 </head>
 <body>
-    <script src="../global.js"></script>
-    <section id="page" class="shop-page">
-        <section class="hero">
-            <button class="button back-button" type="button" onclick="goToPage('../index.html')">Back</button>
-            <h1>Shop</h1>
-        </section>
+  <script type="module" src="../global.js"></script>
 
-        <section class="intro">
-            <p>Browse curated digital products from featured vendors and pick the one that fits your creative projects.</p>
-        </section>
+  <section id="page" class="shop-page">
+    <section class="hero">
+      <div class="hero-left">
+        <h1 class="shop-title">Shop</h1>
+      </div>
 
-        <div id="product-grid" class="product-grid" aria-live="polite"></div>
+      <div class="hero-actions" aria-hidden="false">
+        <button class="button back-button" type="button" onclick="goToPage('../index.html')" aria-label="Back to home">Back</button>
+        <button id="registerBtn" class="button secondary" type="button" onclick="goToPage('../Pages/vendor-reg.html')">
+          Register
+        </button>
+        <button id="loginBtn" class="button primary" type="button" onclick="goToPage('../Pages/vendor-login.html')">
+          Login
+        </button>
+      </div>
     </section>
 
-    <div class="popup-overlay" id="infoPopup" aria-hidden="true">
-        <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <button class="close-btn" id="closeBtn" type="button" aria-label="Close popup">&times;</button>
-            <div class="popup-image-wrapper" id="modalImageWrapper">
-                <img id="modalImage" class="popup-image" src="" alt="Product preview">
-            </div>
-            <h2 id="modalTitle">Product Title</h2>
-            <p class="modal-price" id="modalPrice">Price</p>
-            <p id="modalDescription">Product description goes here.</p>
-            <a href="#" id="moreInfoLink" class="action-btn">More Info</a>
-        </div>
+    <section class="intro">
+      <p>Browse curated digital products from featured vendors and pick the one that fits your creative projects.</p>
+    </section>
+
+    <div id="product-grid" class="product-grid" aria-live="polite"></div>
+  </section>
+
+  <div class="popup-overlay" id="infoPopup" aria-hidden="true">
+    <div class="popup-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="close-btn" id="closeBtn" type="button" aria-label="Close popup">&times;</button>
+      <div class="popup-image-wrapper" id="modalImageWrapper">
+        <img id="modalImage" class="popup-image" src="" alt="Product preview" />
+      </div>
+      <h2 id="modalTitle">Product Title</h2>
+      <p class="modal-price" id="modalPrice">Price</p>
+      <p id="modalDescription">Product description goes here.</p>
+      <a href="#" id="moreInfoLink" class="action-btn">More Info</a>
     </div>
+  </div>
 
-    <script>
-        const page = document.getElementById('page');
-        const overlay = document.getElementById('infoPopup');
-        const closeBtn = document.getElementById('closeBtn');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalPrice = document.getElementById('modalPrice');
-        const modalDescription = document.getElementById('modalDescription');
-        const moreInfoLink = document.getElementById('moreInfoLink');
-        const modalImageWrapper = document.getElementById('modalImageWrapper');
-        const modalImage = document.getElementById('modalImage');
+  <script>
+    const page = document.getElementById('page');
+    const overlay = document.getElementById('infoPopup');
+    const closeBtn = document.getElementById('closeBtn');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDescription = document.getElementById('modalDescription');
+    const moreInfoLink = document.getElementById('moreInfoLink');
+    const modalImageWrapper = document.getElementById('modalImageWrapper');
+    const modalImage = document.getElementById('modalImage');
 
-        function openModal(card) {
-            const title = card.getAttribute('data-title') || 'Product';
-            const price = card.getAttribute('data-price') || 'Price coming soon';
-            const destinationLink = card.getAttribute('data-link') || '../index.html';
-            const description = card.getAttribute('data-description') || 'More details coming soon.';
-            const imageUrl = card.getAttribute('data-image') || '../Assets/placeholder.svg';
-            const normalizedImage = imageUrl.startsWith('product') ? '../Assets/placeholder.svg' : imageUrl;
+    function openModal(card) {
+      const title = card.getAttribute('data-title') || 'Product';
+      const price = card.getAttribute('data-price') || 'Price coming soon';
+      const destinationLink = card.getAttribute('data-link') || '../index.html';
+      const description = card.getAttribute('data-description') || 'More details coming soon.';
+      const imageUrl = card.getAttribute('data-image') || '../Assets/placeholder.svg';
+      const normalizedImage = imageUrl.startsWith('product') ? '../Assets/placeholder.svg' : imageUrl;
 
-            modalTitle.textContent = title;
-            modalPrice.textContent = price;
-            modalDescription.textContent = description;
-            moreInfoLink.href = destinationLink === 'product-page.html' ? '../index.html' : destinationLink;
-            moreInfoLink.textContent = 'More Info';
-            modalImage.src = normalizedImage;
-            modalImage.alt = title;
-            modalImageWrapper.style.display = 'flex';
-            overlay.classList.add('active');
-            overlay.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-        }
+      modalTitle.textContent = title;
+      modalPrice.textContent = price;
+      modalDescription.textContent = description;
+      moreInfoLink.href = destinationLink === 'product-page.html' ? '../index.html' : destinationLink;
+      moreInfoLink.textContent = 'More Info';
+      modalImage.src = normalizedImage;
+      modalImage.alt = title;
+      modalImageWrapper.style.display = 'flex';
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
 
-        function closeModal() {
-            overlay.classList.remove('active');
-            overlay.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
+    function closeModal() {
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
 
-        closeBtn.addEventListener('click', closeModal);
-        overlay.addEventListener('click', (event) => {
-            if (event.target === overlay) {
-                closeModal();
-            }
-        });
+    closeBtn.addEventListener('click', closeModal);
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay) {
+        closeModal();
+      }
+    });
 
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape' && overlay.classList.contains('active')) {
-                closeModal();
-            }
-        });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && overlay.classList.contains('active')) {
+        closeModal();
+      }
+    });
 
-        window.addEventListener('DOMContentLoaded', () => {
-            requestAnimationFrame(() => {
-                page.classList.add('loaded');
-            });
-        });
+    window.addEventListener('DOMContentLoaded', () => {
+      requestAnimationFrame(() => {
+        page.classList.add('loaded');
+      });
+    });
 
-        function goToPage(url) {
-            page.classList.remove('loaded');
-            page.classList.add('leaving');
+    function goToPage(url) {
+      page.classList.remove('loaded');
+      page.classList.add('leaving');
 
-            setTimeout(() => {
-                window.location.href = url;
-            }, 450);
-        }
+      setTimeout(() => {
+        window.location.href = url;
+      }, 450);
+    }
 
-        window.openModal = openModal;
-    </script>
+    // expose openModal for product cards
+    window.openModal = openModal;
+    // expose goToPage for inline onclick handlers (if global.js doesn't attach it)
+    window.goToPage = goToPage;
+  </script>
 </body>
 </html>

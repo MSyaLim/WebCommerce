@@ -1,0 +1,114 @@
+/* PAGE LAYOUT */
+.dashboard {
+    width: min(var(--container-lg), calc(100% - 2rem));
+    margin: 3rem auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* HERO */
+.dashboard-hero {
+    padding: 1.5rem;
+    text-align: center;
+
+    background: linear-gradient(
+        135deg,
+        var(--color-surface),
+        rgba(6, 182, 212, 0.08)
+    );
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.dashboard-hero h1 {
+    margin: 0;
+    font-size: 2rem;
+    color: var(--color-primary);
+}
+
+.dashboard-hero p {
+    margin-top: 0.5rem;
+    color: var(--color-text-secondary);
+}
+
+/* ACTION BAR */
+.dashboard-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* GRID */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+/* PRODUCT / ITEM CARD */
+.dashboard-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+}
+
+/* IMAGE */
+.dashboard-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+}
+
+/* TEXT */
+.dashboard-card h3 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.dashboard-card p {
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* EMPTY STATE */
+.dashboard-empty {
+    padding: 2rem;
+    text-align: center;
+
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius);
+
+    color: var(--color-text-secondary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .dashboard-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .dashboard-actions {
+        flex-direction: column;
+    }
+}
